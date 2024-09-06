@@ -8,6 +8,10 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/auth/login/login.component';
+import { ProyectosComponent } from './components/main/proyectos/proyectos.component';
+import { UsuariosComponent } from './components/main/usuarios/usuarios.component';
+import { AreasComponent } from './components/main/areas/areas.component';
+import { TramiteComponent } from './components/main/tramite/tramite.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +19,11 @@ import { LoginComponent } from './components/auth/login/login.component';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ProyectosComponent,
+    UsuariosComponent,
+    AreasComponent,
+    TramiteComponent
   ],
   imports: [
     BrowserModule,
