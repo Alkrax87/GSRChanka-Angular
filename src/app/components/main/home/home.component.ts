@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  firestore:Firestore = inject(Firestore);
+  items$:Observable<any[]>;
 
+  constructor(){
+    const aCollection = collection(this.firestore,"items");
+    this.items$ = collectionData(aCollection);
+
+    this.items$.subscribe(data => {
+      console.log(data);
+    })
+  }
 }
