@@ -41,10 +41,10 @@
       <div class="user-card" [ngClass]="{'collapsed': isCollapsed}">
         <img *ngIf="!isCollapsed" src="https://avatar.iran.liara.run/public" alt="USER-logo">
         <div *ngIf="!isCollapsed" class="user-info">
-          <p class="user-name text-nowrap">Paco Bazan</p>
-          <p class="user-rol text-nowrap">usuario</p>
+          <p class="user-name text-nowrap">{{ userName }}</p>
+          <p class="user-rol text-nowrap">{{ userRol }}</p>
         </div>
-        <button class="logout-button"><i class="fas fa-sign-out-alt"></i></button>
+        <button class="logout-button" (click)="logout()"><i class="fas fa-sign-out-alt"></i></button>
       </div>
     </div>
   </div>

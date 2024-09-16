@@ -41,6 +41,7 @@ export class LoginComponent {
       // Comprobar la contraseña
       const isMatch = await bcrypt.compare(this.credentials.password, userData.password);
       if (isMatch) {
+        localStorage.setItem('user', JSON.stringify(userData));
         this.router.navigate(['/portal/home']);
       } else {
         this.errorMessage = 'Contraseña incorrecta';

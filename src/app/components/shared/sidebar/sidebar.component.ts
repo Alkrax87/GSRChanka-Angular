@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,6 +8,26 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  // User Info
+  userName: string | null = null;
+  userRol: string | null = null;
+
+  ngOnInit(){
+    const user = localStorage.getItem('user');
+    if (user){
+      this.userName = JSON.parse(user).name + ' ' + JSON.parse(user).lastname;
+      this.userRol = JSON.parse(user).rol;
+    }
+  }
+
+  // Logout
+  router = inject(Router);
+  logout(){
+    localStorage.removeItem('user');
+    sessionStorage.removeItem('authToken');
+    this.router.navigate(['/login']);
+  }
+
   openMenus: Record<string, boolean> = {};
   isCollapsed = false;
 
