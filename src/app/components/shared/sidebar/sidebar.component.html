@@ -1,0 +1,55 @@
+<div class="app-container">
+  <!-- Sidebar -->
+  <div class="menu-card" [ngClass]="{'collapsed': isCollapsed}">
+    <!-- Logo -->
+    <div class="logo-section">
+      <div class="logo">
+        <span *ngIf="!isCollapsed" class="text-nowrap"><img src="/assets/images/gsrc-logo.png" alt="GSRC-logo">&nbsp;<b>GSR</b>Chanka</span>
+        <span *ngIf="isCollapsed"><img src="/assets/images/gsrc-logo.png" alt="GSRC-logo"></span>
+      </div>
+    </div>
+    <!-- Collapse -->
+    <button class="collapse-button" (click)="toggleCollapse()">
+      <div [ngClass]="{'rotate': isCollapsed}">
+        <i class="fas fa-caret-left collapse-icon" ></i>
+      </div>
+    </button>
+    <!-- Menu -->
+    <div class="menu-scroll-area">
+      <div *ngFor="let category of menuCategories" class="menu-category">
+        <h3 *ngIf="!isCollapsed" class="category-title">{{ category.category }}</h3>
+        <div *ngFor="let item of category.items">
+          <button class="menu-item px-3" (click)="toggleMenu(item.id)" [title]="isCollapsed ? item.label : null">
+            <span class="item-content">
+              <i class="{{ item.icon }}"></i>
+              <span *ngIf="!isCollapsed">&nbsp;&nbsp;{{ item.label }}</span>
+            </span>
+            <span *ngIf="!isCollapsed && item.subItems">
+              <i class="fas fa-caret-down" [ngClass]="{'rotate': openMenus[item.id]}"></i>
+            </span>
+          </button>
+          <div *ngIf="!isCollapsed && item.subItems && openMenus[item.id]" class="sub-menu">
+            <button *ngFor="let subItem of item.subItems" class="sub-menu-item px-3">
+              {{ subItem }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- User -->
+    <div class="user-section">
+      <div class="user-card" [ngClass]="{'collapsed': isCollapsed}">
+        <img *ngIf="!isCollapsed" src="https://avatar.iran.liara.run/public" alt="USER-logo">
+        <div *ngIf="!isCollapsed" class="user-info">
+          <p class="user-name text-nowrap">Paco Bazan</p>
+          <p class="user-rol text-nowrap">usuario</p>
+        </div>
+        <button class="logout-button"><i class="fas fa-sign-out-alt"></i></button>
+      </div>
+    </div>
+  </div>
+  <!-- Content -->
+  <div class="content-area w-100">
+    <router-outlet></router-outlet>
+  </div>
+</div>

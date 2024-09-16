@@ -6,10 +6,12 @@ import { FormsModule } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/main/home/home.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { SidebarComponent } from './components/shared/sidebar/sidebar.component';
 import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { HomeComponent } from './components/main/home/home.component';
 
 // Environments
 import { environment } from '../environments/environment.development';
@@ -25,7 +27,9 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

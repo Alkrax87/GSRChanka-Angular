@@ -1,34 +1,46 @@
 <div class="container-fluid">
-  <div class="row bg-dark login-columns-container">
+  <div class="row bg-dark">
+    <!-- Left Column -->
     <div class="col-6 p-0">
-      <div class="colum-1">
+      <div class="colum cl">
         <div class="left-item">
           <div>
-            <img src="/assets/images/gsrc-logo.png" alt="gsrc-logo">
+            <img src="/assets/images/gsrc-logo.png" alt="GSRC-logo">
             <p class="text-center">GOBIERNO SUB REGIONAL CHANKA</p>
           </div>
         </div>
       </div>
     </div>
+    <!-- Right Column -->
     <div class="col-6 p-0">
-      <div class="colum-2">
+      <div class="colum cr">
         <div class="right-item">
           <div>
+            <!-- Title -->
             <div class="text-center">
               <h1>Bienvenido!</h1>
               <span>Inicia sesión usando tu usuario y contraseña.</span>
             </div>
-            <form class="pt-4">
+            <!-- Form -->
+            <form class="pt-2" (ngSubmit)="loginUser()" #loginForm="ngForm">
               <div class="input">
-                <input type="text" class="input-field" required/>
+                <input type="text" id="user" name="user" class="input-field" [(ngModel)]="credentials.user" required/>
                 <label class="input-label">Usuario</label>
               </div>
               <div class="input">
-                <input type="password" class="input-field" required/>
+                <input type="password" id="password" name="password" class="input-field" [(ngModel)]="credentials.password" required/>
                 <label class="input-label">Contraseña</label>
               </div>
-              <div class="action pt-5">
-                <a routerLink="/home" class="login-button">Ingresar &nbsp;<i class="fas fa-sign-in-alt"></i></a>
+              <!-- Alert -->
+              @if (errorMessage) {
+                <div class="alert-container text-center">
+                  <p class="text-danger mb-0">{{ errorMessage }}</p>
+                </div>
+              } @else {
+                <div class="alert-container"></div>
+              }
+              <div class="action">
+                <button type="submit">Ingresar &nbsp;<i class="fas fa-sign-in-alt"></i></button>
               </div>
             </form>
           </div>
