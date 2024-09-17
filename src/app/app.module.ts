@@ -12,6 +12,10 @@ import { SidebarComponent } from './components/shared/sidebar/sidebar.component'
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { HomeComponent } from './components/main/home/home.component';
+import { ProyectosComponent } from './components/main/proyectos/proyectos.component';
+import { UsuariosComponent } from './components/main/usuarios/usuarios.component';
+import { AreasComponent } from './components/main/areas/areas.component';
+import { TramiteComponent } from './components/main/tramite/tramite.component';
 
 // Environments
 import { environment } from '../environments/environment.development';
@@ -20,7 +24,12 @@ import { environment } from '../environments/environment.development';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import { CreateProyectComponent } from './components/main/proyectos/create-proyect/create-proyect.component';
+import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditarProyectComponent } from './components/main/proyectos/editar-proyect/editar-proyect.component';
+import { DeletProyectComponent } from './components/main/proyectos/delet-proyect/delet-proyect.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,12 +38,22 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     FooterComponent,
     LoginComponent,
     SidebarComponent,
-    RegisterComponent
+    RegisterComponent,
+    ProyectosComponent,
+    UsuariosComponent,
+    AreasComponent,
+    TramiteComponent,
+    CreateProyectComponent,
+    EditarProyectComponent,
+    DeletProyectComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment)),
