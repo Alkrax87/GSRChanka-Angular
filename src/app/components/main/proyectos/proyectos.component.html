@@ -1,1 +1,74 @@
-<p>proyectos works!</p>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12">
+        <!-- Agregar -->
+        <div class="row">
+            <div class="col-6">
+              <button mat-raised-button color="warn" class="custom-green-button" (click)="abrirModal()"><i class="fas fa-plus"></i>&nbsp;&nbsp; Agregar Inversión</button>
+            </div>
+            <div class="col-6 text-end">
+              <a href="" class="btn btn-dark" target="_blank"><i class="fas fa-print"></i>&nbsp;&nbsp; Imprimir</a>
+            </div>
+
+        </div>
+        <!-- Tabla -->
+        <div class="table-responsive">
+          <table id="segmentosTable" class="table table-bordered table-striped">
+            <thead class="table-header">
+              <tr>
+                <th>#</th>
+                <th class="text-nowrap">CUI</th>
+                <th class="text-nowrap" style="min-width: 400px">Nombre</th>
+                <th class="text-center">Responsable</th>
+                <th class="text-center">Provincia</th>
+                <th class="text-center">Distrito</th>
+                <th class="text-center">Estado</th>
+                <th class="text-nowrap">Fecha Inicio</th>
+                <th class="text-nowrap">Fecha Final</th>
+                <th class="text-center">Nivel</th>
+                <th class="text-center">Función</th>
+                <th class="text-center">Modalidad</th>
+                <th class="text-nowrap">Presupuesto Formulación</th>
+                <th class="text-nowrap">Presupuesto Ejecución</th>
+                <th class="text-center">Extras</th>
+                <th class="text-center">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let proyectos of items$ | async">
+                  <td class="text-center"></td>
+                  <td class="text-left">{{ proyectos.cuiInversion }}</td>
+                  <td class="text-nowrap">{{ proyectos.nombreInversion }}</td>
+                  <td class="text-nowrap text-center">{{ proyectos.idUsuario }}</td>
+                  <td class="text-center">{{ proyectos.provinciaInversion }}</td>
+                  <td class="text-center">{{ proyectos.distritoInversion }}</td>
+                  <td class="text-center">{{ proyectos.nivelInversion }}</td>
+                  <td class="text-center"><i class="fas fa-calendar-alt"></i>&nbsp;{{ proyectos.fechaInicioInversion }}</td>
+                  <td class="text-center"><i class="fas fa-calendar-alt"></i>&nbsp;{{ proyectos.fechaFinalInversion }}</td>
+                  <td class="text-center">{{ proyectos.funcionInversion }}</td>
+                  <td class="text-center">{{ proyectos.modalidadInversion }} </td>
+                  <td class="text-center">{{ proyectos.estadoInversion }}</td>
+                  <td class="text-center">{{ proyectos.presupuestoFormulacionInversion }}</td>
+                  <td class="text-center">{{ proyectos.presupuestoEjecucionInversion }}</td>
+                  
+                  <td class="text-center text-nowrap">
+                    <a class="btn btn-dark btn-option" href="" target="_blank"><i class="fas fa-print"></i></a>
+                      <a class="btn btn-secondary btn-option" data-toggle="modal" data-target="#ModalLog"><i class="fas fa-list"></i></a>
+                  </td>
+                  <td class="text-center text-nowrap">
+                    <a class="btn btn-info btn-option" data-toggle="modal" data-target="#ModalShow"><i class="fas fa-eye"></i></a>
+                      <a class="btn btn-warning btn-option" (click)="editarProyecto(proyectos)"><i class="fas fa-edit"></i></a>
+                      <a class="btn btn-danger btn-option"  (click)="eliminarProyecto(proyectos.id)"><i class="fas fa-trash-alt"></i></a>
+                  </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

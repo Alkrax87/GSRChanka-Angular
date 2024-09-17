@@ -22,7 +22,12 @@ import { environment } from '../environments/environment.development';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
-
+import { CreateProyectComponent } from './components/main/proyectos/create-proyect/create-proyect.component';
+import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
+import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { EditarProyectComponent } from './components/main/proyectos/editar-proyect/editar-proyect.component';
+import { DeletProyectComponent } from './components/main/proyectos/delet-proyect/delet-proyect.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,12 +38,18 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
     ProyectosComponent,
     UsuariosComponent,
     AreasComponent,
-    TramiteComponent
+    TramiteComponent,
+    CreateProyectComponent,
+    EditarProyectComponent,
+    DeletProyectComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule, // Asegúrate de incluir ReactiveFormsModule aquí
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment)),
