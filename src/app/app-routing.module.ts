@@ -20,7 +20,11 @@ const routes: Routes = [
   { path: 'usuarios', component: UsuariosComponent },
   {
     path: 'portal', component: SidebarComponent, canActivate:[authGuard], children: [
-      { path: 'home', component: HomeComponent }
+      { path: 'home', component: HomeComponent },
+      { path: 'areas', component: AreasComponent },
+      { path: 'tramites', component: TramiteComponent },
+      { path: 'proyectos', component: ProyectosComponent },
+      { path: 'usuarios', component: UsuariosComponent },
     ]
   },
 ];

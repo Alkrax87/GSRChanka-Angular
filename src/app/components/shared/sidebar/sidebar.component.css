@@ -100,6 +100,13 @@
   display: flex;
   align-items: center;
 }
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
 /* Submenu */
 .sub-menu {
   padding-left: 5px;
@@ -121,6 +128,13 @@
 .sub-menu-item:hover {
   background-color: #4c555e;
   color: #2cc2dd;
+}
+/* Divider */
+.divider {
+  height: 4px;
+  background-color: #9ca3af;
+  border: none;
+  border-radius: 10px;
 }
 /* User */
 .user-section {

@@ -48,34 +48,54 @@ export class SidebarComponent {
         {
           id: 'usuarios',
           label: 'Usuarios',
-          icon: 'fas fa-users'
+          icon: 'fas fa-users',
+          route: '/portal/usuarios',
+          subItems: []
         },
         {
           id: 'roles',
           label: 'Roles',
-          icon: 'fas fa-user-shield'
-        },
-        {
-          id: 'extras',
-          label: 'Extras',
-          icon: 'fas fa-users-cog'
-        },
+          icon: 'fas fa-user-shield',
+          route: '/portal/usuarios',
+          subItems: []
+        }
       ]
     },
     {
-      category: "Gestión",
+      category: "Gestion",
       items: [
         {
           id: 'areas',
           label: 'Areas',
           icon: 'fas fa-building',
-          subItems: ['Estado', 'Otros']
+          route: '/portal/areas',
+          subItems: []
         },
         {
           id: 'proyectos',
           label: 'Proyectos',
           icon: 'fas fa-project-diagram',
-          subItems: ['Planificación', 'Proceso', 'Finalizado']
+          route: '/portal/proyectos',
+          subItems: []
+        },
+        {
+          id: 'tramites',
+          label: 'Trámites',
+          icon: 'fas fa-file-invoice',
+          route: '/portal/tramites',
+          subItems: []
+        }
+      ]
+    },
+    {
+      category: "Otros",
+      items: [
+        {
+          id: 'almacen',
+          label: 'Almacén',
+          icon: 'fas fa-building',
+          route:'',
+          subItems: ['Estado', 'Otros']
         },
         {
           id: 'tramite',
@@ -84,21 +104,6 @@ export class SidebarComponent {
           subItems: ['Seguimiento','Recientes', 'Proceso', 'Finalizados', 'Historial']
         },
       ]
-    },
-    {
-      category: "Almacén",
-      items: [
-        {
-          id: 'almacen',
-          label: 'Almacén',
-          icon: 'fas fa-warehouse',
-          subItems: ['Ubicación', 'Materiales']
-        },
-        { id: 'reportes',
-          label: 'Reportes',
-          icon: 'fas fa-list-alt'
-        },
-      ]
-    },
+    }
   ];
 }
