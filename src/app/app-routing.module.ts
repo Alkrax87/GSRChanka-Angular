@@ -9,6 +9,7 @@ import { ProyectosComponent } from './components/main/proyectos/proyectos.compon
 import { TramiteComponent } from './components/main/tramite/tramite.component';
 import { UsuariosComponent } from './components/main/usuarios/usuarios.component';
 import { authGuard } from './guards/auth.guard';
+import { RolesComponent } from './components/main/roles/roles.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -18,13 +19,15 @@ const routes: Routes = [
   { path: 'proyectos', component: ProyectosComponent },
   { path: 'tramite', component: TramiteComponent },
   { path: 'usuarios', component: UsuariosComponent },
+  //canActivate:[authGuard],
   {
-    path: 'portal', component: SidebarComponent, canActivate:[authGuard], children: [
+    path: 'portal', component: SidebarComponent,  children: [
       { path: 'home', component: HomeComponent },
       { path: 'areas', component: AreasComponent },
       { path: 'tramites', component: TramiteComponent },
       { path: 'proyectos', component: ProyectosComponent },
       { path: 'usuarios', component: UsuariosComponent },
+      { path: 'roles', component: RolesComponent },
     ]
   },
 ];

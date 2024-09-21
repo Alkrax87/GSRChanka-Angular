@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import * as bcrypt from 'bcryptjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,40 +8,38 @@ import * as bcrypt from 'bcryptjs';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  registerForm: FormGroup;
+  errorMessage: string | null = null;
 
-  userModel = {
-    name:'',
-    lastname:'',
-    rol:'',
-    user: '',
-    password: ''
+  constructor(private authService: AuthService, private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      name: ['', [Validators.required]],
+      lastname: ['', [Validators.required]],
+      rol: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(8)]]
+    });
   }
 
-  constructor(private firestore: Firestore, private router: Router) {}
+  async registerUser() {
+    if (this.registerForm.invalid) {
+      this.errorMessage = 'Por favor ingresa un correo y una contraseña válidos.';
+    }
 
-  async registerUser(form: NgForm) {
-    if (form.valid) {
-      try {
-        // Cifrado
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(this.userModel.password, salt);
+    const { name, lastname, rol, username, password } = this.registerForm.value;
 
-        // Referencia a la colección
-        const userRef = collection(this.firestore, 'users');
-
-        // Guardar el usuario
-        await addDoc(userRef, {
-          name: this.userModel.name,
-          lastname: this.userModel.lastname,
-          rol: this.userModel.rol,
-          user: this.userModel.user,
-          password: hashedPassword
-        });
-
-        // Redirigir a la página de login o dashboard
-        this.router.navigate(['']);
-      } catch (error) {
-        console.error('Error registrando el usuario:', error);
+    try {
+      await this.authService.register(name, lastname, rol, username + '@gsrchanka.com', password);
+    } catch (error:any) {
+      switch (error.code) {
+        case 'auth/email-already-in-use':
+          this.errorMessage = 'El correo electrónico ya está en uso.';
+          break;
+        case 'auth/invalid-email':
+          this.errorMessage = 'El usuario ingresado no es válido.';
+          break;
+        default:
+          this.errorMessage = 'Ocurrió un error inesperado. Inténtalo de nuevo.';
       }
     }
   }

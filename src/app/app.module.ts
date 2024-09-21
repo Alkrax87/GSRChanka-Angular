@@ -24,12 +24,15 @@ import { environment } from '../environments/environment.development';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
+import { getAuth, provideAuth } from '@angular/fire/auth'
+
 import { CreateProyectComponent } from './components/main/proyectos/create-proyect/create-proyect.component';
 import { ReactiveFormsModule } from '@angular/forms'; // Importa ReactiveFormsModule
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditarProyectComponent } from './components/main/proyectos/editar-proyect/editar-proyect.component';
 import { DeletProyectComponent } from './components/main/proyectos/delet-proyect/delet-proyect.component';
+import { RolesComponent } from './components/main/roles/roles.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,8 @@ import { DeletProyectComponent } from './components/main/proyectos/delet-proyect
     TramiteComponent,
     CreateProyectComponent,
     EditarProyectComponent,
-    DeletProyectComponent
+    DeletProyectComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +62,8 @@ import { DeletProyectComponent } from './components/main/proyectos/delet-proyect
   providers: [
     provideFirebaseApp(() => initializeApp(environment)),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    provideAuth(() => getAuth())
   ],
   bootstrap: [AppComponent]
 })

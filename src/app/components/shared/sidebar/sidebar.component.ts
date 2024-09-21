@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { inject } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,12 +9,14 @@ import { inject } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  constructor(private authService:AuthService) {}
+
   // User Info
   userName: string | null = null;
   userRol: string | null = null;
 
   ngOnInit(){
-    const user = localStorage.getItem('user');
+    const user = sessionStorage.getItem('user');
     if (user){
       this.userName = JSON.parse(user).name + ' ' + JSON.parse(user).lastname;
       this.userRol = JSON.parse(user).rol;
@@ -21,11 +24,8 @@ export class SidebarComponent {
   }
 
   // Logout
-  router = inject(Router);
   logout(){
-    localStorage.removeItem('user');
-    sessionStorage.removeItem('authToken');
-    this.router.navigate(['/login']);
+    this.authService.logout();
   }
 
   openMenus: Record<string, boolean> = {};
@@ -56,7 +56,7 @@ export class SidebarComponent {
           id: 'roles',
           label: 'Roles',
           icon: 'fas fa-user-shield',
-          route: '/portal/usuarios',
+          route: '/portal/roles',
           subItems: []
         }
       ]
