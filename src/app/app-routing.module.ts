@@ -8,20 +8,32 @@ import { AreasComponent } from './components/main/areas/areas.component';
 import { ProyectosComponent } from './components/main/proyectos/proyectos.component';
 import { TramiteComponent } from './components/main/tramite/tramite.component';
 import { UsuariosComponent } from './components/main/usuarios/usuarios.component';
-import { authGuard } from './guards/auth.guard';
 import { RolesComponent } from './components/main/roles/roles.component';
+import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
+
+const redirectLoggedIn = () => redirectLoggedInTo(['portal/home']);
+const redirectUnauthorizedUser = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'areas', component: AreasComponent },
-  { path: 'proyectos', component: ProyectosComponent },
-  { path: 'tramite', component: TramiteComponent },
-  { path: 'usuarios', component: UsuariosComponent },
-  //canActivate:[authGuard],
   {
-    path: 'portal', component: SidebarComponent,  children: [
+    path: 'login',
+    component: LoginComponent,
+    canActivate:[AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn }
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate:[AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn }
+  },
+  {
+    path: 'portal',
+    component: SidebarComponent,
+    canActivate:[AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedUser },
+    children: [
       { path: 'home', component: HomeComponent },
       { path: 'areas', component: AreasComponent },
       { path: 'tramites', component: TramiteComponent },
