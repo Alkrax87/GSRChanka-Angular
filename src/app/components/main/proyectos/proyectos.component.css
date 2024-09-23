@@ -83,4 +83,24 @@ body {
     background-color: #4caf50 !important;  /* Color verde */
     color: white !important;               /* Texto blanco */
   }
- 
+  .table-header th {
+    cursor: pointer; /* Muestra el puntero al pasar por las columnas */
+    position: relative;
+  }
+  
+  .table-header i {
+    font-size: 0.8rem; /* Tamaño del icono */
+    margin-left: 5px;
+    color: gray;
+    vertical-align: middle;
+  }
+  
+  .table-header i.bi-caret-up-fill,
+  .table-header i.bi-caret-down-fill {
+    color: black; /* Color cuando está activo el icono de ordenación */
+  }
+  
+  .table-header i.bi-diamond {
+    color: #888; /* Color del rombo cuando no está activo */
+  }
+  

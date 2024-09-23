@@ -1,7 +1,7 @@
-import { Component, Inject } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Firestore, doc, updateDoc, addDoc, collection } from '@angular/fire/firestore';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Firestore, addDoc, collection} from '@angular/fire/firestore';
+import { MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-create-proyect',
@@ -12,13 +12,14 @@ export class CreateProyectComponent {
 
   proyectoForm: FormGroup;
  
-  isEdit: boolean = false;
+  firebase: Firestore;
+
+  
 
   constructor(
     public _matDialogRef: MatDialogRef<CreateProyectComponent>,
     private fb: FormBuilder,
-    private firestore: Firestore,
-    @Inject(MAT_DIALOG_DATA) public data: any // Aquí recibimos los datos del proyecto si es edición
+    private firestore: Firestore
   ) 
   {
     this.proyectoForm = this.fb.group({
@@ -39,47 +40,25 @@ export class CreateProyectComponent {
       presupuestoFormulacionInversion: ['', Validators.required],
       presupuestoEjecucionInversion: ['', Validators.required],
     });
-
-    // Si data existe, es porque estamos editando un proyecto
-    if (data) {
-      this.isEdit = true;
-      this.proyectoForm.patchValue(data); // Cargar los datos existentes en el formulario
-    }
+    this.firebase = firestore;
   }
-
+  
   // Método para cerrar el modal
   closeModal(): void {
     this._matDialogRef.close();
   }
-
-   // Método para agregar o editar un proyecto
-   saveProyecto(): void {
+  // Método para agregar el proyecto directamente a Firestore
+  addProyecto(): void {
     if (this.proyectoForm.valid) {
-      const proyectoData = this.proyectoForm.value;
-
-      if (this.isEdit) {
-        // Si es edición, actualizamos el proyecto en Firestore
-        const proyectoDocRef = doc(this.firestore, `proyectos/${this.data.id}`);
-        updateDoc(proyectoDocRef, proyectoData)
-          .then(() => {
-            console.log('Proyecto actualizado correctamente');
-            this._matDialogRef.close();
-          })
-          .catch(error => {
-            console.error('Error al actualizar el proyecto: ', error);
-          });
-      } else {
-        // Si no es edición, es una creación de nuevo proyecto
-        const acoleccion = collection(this.firestore, 'proyectos');
-        addDoc(acoleccion, proyectoData)
-          .then(() => {
-            console.log('Proyecto agregado correctamente');
-            this._matDialogRef.close();
-          })
-          .catch(error => {
-            console.error('Error al agregar el proyecto: ', error);
-          });
-      }
+      const proyectosRef = collection(this.firebase, 'proyectos');
+      addDoc(proyectosRef, this.proyectoForm.value)
+        .then(() => {
+          console.log('Proyecto agregado correctamente');
+          this.closeModal(); // Cierra el modal después de guardar
+        })
+        .catch((error) => {
+          console.error('Error al agregar proyecto: ', error);
+        });
     }
   }
 }
