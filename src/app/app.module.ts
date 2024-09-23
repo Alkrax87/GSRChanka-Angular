@@ -30,6 +30,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditarProyectComponent } from './components/main/proyectos/editar-proyect/editar-proyect.component';
 import { DeletProyectComponent } from './components/main/proyectos/delet-proyect/delet-proyect.component';
+import {DataTablesModule} from  'angular-datatables';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +56,9 @@ import { DeletProyectComponent } from './components/main/proyectos/delet-proyect
     AppRoutingModule,
     FormsModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    DataTablesModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment)),

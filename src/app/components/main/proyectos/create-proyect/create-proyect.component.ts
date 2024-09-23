@@ -40,8 +40,6 @@ export class CreateProyectComponent {
       presupuestoFormulacionInversion: ['', Validators.required],
       presupuestoEjecucionInversion: ['', Validators.required],
     });
-
-    // Si data existe, es porque estamos editando un proyecto
     this.firebase = firestore;
   }
   
@@ -49,7 +47,6 @@ export class CreateProyectComponent {
   closeModal(): void {
     this._matDialogRef.close();
   }
-
   // Método para agregar el proyecto directamente a Firestore
   addProyecto(): void {
     if (this.proyectoForm.valid) {
