@@ -4,7 +4,7 @@
       <div class="col-12">
         <div class="row">
           <div class="col-6">
-            <button mat-raised-button color="warn" class="custom-green-button" (click)="abrirModal()">
+            <button mat-raised-button color="warn" class="custom-green-button" (click)="abrirModalCreate()">
               <i class="fas fa-plus"></i>&nbsp;&nbsp; Agregar Inversión
             </button>
           </div>
@@ -72,8 +72,8 @@
                       <a class="btn btn-secondary btn-option" data-toggle="modal" data-target="#ModalLog"><i class="fas fa-list"></i></a>
                   </td>
                   <td class="text-center text-nowrap">
-                    <a class="btn btn-info btn-option" data-toggle="modal" data-target="#ModalShow"><i class="fas fa-eye"></i></a>
-                      <a class="btn btn-warning btn-option" ><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-info btn-option" (click)="abrirModalMostrar(proyectos)"><i class="fas fa-eye"></i></a>
+                      <a class="btn btn-warning btn-option" (click)="abrirModalEditar(proyectos)"><i class="fas fa-edit"></i></a>
                       <a class="btn btn-danger btn-option"  (click)="eliminarProyecto(proyectos.id)"><i class="fas fa-trash-alt"></i></a>
                   </td>
                 </tr>

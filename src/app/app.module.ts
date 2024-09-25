@@ -33,7 +33,16 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditarProyectComponent } from './components/main/proyectos/editar-proyect/editar-proyect.component';
 import { DeletProyectComponent } from './components/main/proyectos/delet-proyect/delet-proyect.component';
 import { RolesComponent } from './components/main/roles/roles.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ShowProyectComponent } from './components/main/proyectos/show-proyect/show-proyect.component';
+import { CreateAreaComponent } from './components/main/areas/create-area/create-area.component';
+import { EditAreaComponent } from './components/main/areas/edit-area/edit-area.component';
+import { DeleteAreaComponent } from './components/main/areas/delete-area/delete-area.component';
+import { ShowAreaComponent } from './components/main/areas/show-area/show-area.component';
+import { ShowTramiteComponent } from './components/main/tramite/show-tramite/show-tramite.component';
+import { EditTramiteComponent } from './components/main/tramite/edit-tramite/edit-tramite.component';
+import { CreateTramiteComponent } from './components/main/tramite/create-tramite/create-tramite.component';
+import { DeleteTramiteComponent } from './components/main/tramite/delete-tramite/delete-tramite.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +59,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CreateProyectComponent,
     EditarProyectComponent,
     DeletProyectComponent,
-    RolesComponent
+    RolesComponent,
+    ShowProyectComponent,
+    CreateAreaComponent,
+    EditAreaComponent,
+    DeleteAreaComponent,
+    ShowAreaComponent,
+    ShowTramiteComponent,
+    EditTramiteComponent,
+    CreateTramiteComponent,
+    DeleteTramiteComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +77,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatDialogModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    
   ],
   providers: [
     provideFirebaseApp(() => initializeApp(environment)),

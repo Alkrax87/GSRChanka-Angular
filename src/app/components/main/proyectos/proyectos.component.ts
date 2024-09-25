@@ -7,6 +7,8 @@ import { map, startWith } from 'rxjs/operators'; // Importa operadores de RxJS
 import { CreateProyectComponent } from './create-proyect/create-proyect.component';
 import { DeletProyectComponent } from './delet-proyect/delet-proyect.component';
 import { deleteDoc, doc } from '@angular/fire/firestore'; // Importa deleteDoc y doc
+import { EditarProyectComponent } from './editar-proyect/editar-proyect.component';
+import { ShowProyectComponent } from './show-proyect/show-proyect.component';
 
 @Component({
   selector: 'app-proyectos',
@@ -138,12 +140,25 @@ export class ProyectosComponent {
   return 'bi-diamond'; // El rombo se muestra cuando no hay orden activo en esa columna
   }
   //Modal para abrir el Create-proyecto
-  abrirModal(): void {
+  abrirModalCreate(): void {
     this._matDialog.open(CreateProyectComponent, {
       width: '700px'
     });
   }
-
+  //Modal para abrir el Editar-Proyecto
+  abrirModalEditar(proyecto: any): void {
+    this._matDialog.open(EditarProyectComponent, {
+      width: '700px',
+      data: proyecto // Pasar los datos del proyecto al modal de edición
+    });
+  }
+  //Metodo para Show
+  abrirModalMostrar(proyecto: any): void {
+    this._matDialog.open(ShowProyectComponent, {
+      width: '700px',
+      data: proyecto // Pasar los datos del proyecto al modal
+    });
+  }
   //Metodo eliminar un proyecto
   eliminarProyecto(id: string): void {
     const dialogRef = this._matDialog.open(DeletProyectComponent, {

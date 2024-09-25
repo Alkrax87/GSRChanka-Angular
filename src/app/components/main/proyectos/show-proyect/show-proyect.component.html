@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h5 class="modal-title">Detalles del Proyecto</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+  </div>
+  
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-12 mb-3">
+        <strong>CUI:</strong> {{ data.cuiInversion }}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Nombre:</strong> {{ data.nombreInversion}}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Responsable:</strong> {{ data.idUsuario }}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Provincia:</strong> {{ data.provinciaInversion }}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Distrito:</strong> {{ data.distritoInversion }}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Nivel:</strong> {{ data.nivelInversion}}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Funcion:</strong> {{ data.funcionInversion}}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Modalidad:</strong> {{ data.modalidadInversion }}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Estado:</strong> {{ data.estadoInversion }}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Fecha Inicio:</strong> {{ data.fechaInicioInversion}}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Fecha Final:</strong> {{ data.fechaFinalInversion}}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Presupuesto de Formulacion:</strong> {{ data.presupuestoFormulacionInversion}}
+      </div>
+      <div class="col-12 mb-3">
+        <strong>Presupuesto de Ejecución:</strong> {{ data.presupuestoEjecucionInversion }}
+      </div>
+      <!-- Añade más campos según lo necesites -->
+    </div>
+  </div>
+  
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="closeModal()">Cerrar</button>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+ 

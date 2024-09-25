@@ -1,0 +1,85 @@
+<form [formGroup]="proyectoForm" (ngSubmit)="saveChanges()">
+    <div class="modal-content p-4">
+        <!-- Botón para cerrar el modal -->
+        <div class="modal-header">
+          <h5 class="modal-title">Actualizar Tramite</h5>
+            <!-- Botón de cierre con (click) para cerrar el modal -->
+            <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+        </div>
+      
+        <!-- Formulario -->
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group mb-3">
+              <label class="form-label">Nro Documento</label>
+              <input type="text" formControlName="nroDocumento" class="form-control" placeholder="Ingrese Nro" required />
+            </div>
+      
+            <div class="form-group mb-3">
+              <label class="form-label">Tipo Documento</label>
+              <input class="form-control" formControlName="tipoDocumento" placeholder="Ingrese Tipo Documento" rows="3" required>
+            </div>
+    
+            <div class="form-group mb-3">
+              <label class="form-label" for="idUsuario">Remitente</label>
+              <select formControlName="idUsuario" id="idUsuario" class="form-select" required>
+                <option value="" disabled selected>Selecciona un usuario</option>
+                <option value="brian">brian</option>
+              </select>
+            </div>
+      
+            <div class="row">
+              <div class="col-md-6 form-group mb-3">
+                <label class="form-label" for="provinciaInversion">Area Origen</label>
+                <select formControlName="areaOrigen" class="form-select" required>
+                  <option value="" disabled selected>Selecciona una area</option>
+                  <option value="CONTABILIDAD">CONTABILIDAD</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group mb-3">
+                <label class="form-label" for="distritoInversion">Area Destino</label>
+                <select formControlName="areaDestino" class="form-select" required>
+                  <option value="" disabled selected>Selecciona una area</option>
+                  <option value="ADMINISTRACION">ADMINISTRACION</option>
+                </select>
+              </div>
+            </div>
+      
+            <!-- Continuar con los campos restantes del formulario usando 'form-group' y 'mb-3' -->
+            <div class="form-group mb-3">
+                <label class="form-label">Estado Documento</label>
+                <input class="form-control" formControlName="estadoDocumento" placeholder="Ingrese Estado" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Nro Folios</label>
+                <input class="form-control" formControlName="nroFolios" placeholder="Ingrese Nro Folios" required>
+              </div>
+
+              <div class="form-group mb-3">
+                <label class="form-label">Asunto Tramite</label>
+                <textarea class="form-control" formControlName="asuntoTramite" placeholder="Ingrese Asunto" rows="3" required></textarea>
+              </div>
+      
+              <!-- Fechas -->
+              <div class="row">
+                <div class="col-6 form-outline mb-4">
+                  <label class="form-label">Fecha</label>
+                  <input type="date" formControlName="fechaTramite" class="input-auth" required/>
+                </div>
+                <div class="col-6 form-outline mb-4">
+                    <label class="form-label">Archivo Adjunto</label>
+                    <input type="texto" formControlName="archivoAdjunto" class="input-auth" required/>
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 py-2 text-center">
+            <button type="button" class="btn btn-secondary" (click)="closeModal()"><i class="fas fa-undo-alt"></i>&nbsp;&nbsp;Volver</button>
+            <button type="submit" class="btn btn-success mx-1">
+              <i class="fas fa-plus"></i>&nbsp;&nbsp;Actualizar</button>
+          </div>
+    </div>
+    </form>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+      
