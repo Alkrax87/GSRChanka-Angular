@@ -1,1 +1,100 @@
-<p>tramite works!</p>
+<div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-6">
+              <button mat-raised-button color="warn" class="custom-green-button" (click)="abrirModalCreate()">
+                <i class="fas fa-plus"></i>&nbsp;&nbsp; Agregar Tramite
+              </button>
+            </div>
+            <div class="col-6 text-end">
+              <label class="form-label">Buscar:&nbsp;</label>
+              <input matInput placeholder="Buscar..." [formControl]="searchControl" > <!-- Campo de búsqueda -->
+            </div>
+            <div class="col-6">
+              <label for="pageSizeSelect">Proyectos por página:&nbsp;&nbsp;</label>
+              <select id="pageSizeSelect" class="form-select w-auto d-inline-block" (change)="changePageSize($event)">
+                <option *ngFor="let size of pageSizeOptions" [value]="size" [selected]="size === pageSize">{{ size }}</option>
+              </select>
+            </div>
+            
+          </div>
+  
+          <!-- Tabla -->
+          <div class="table-responsive">
+            <table id="proyectosTable"  class="table table-bordered table-striped">
+              <thead class="table-header">
+                <tr>
+                  <th>#</th>
+                  <th (click)="sortData('nroDocumento')" class="dt-column-order text-nowrap">Nro Documento</th>
+                  <th (click)="sortData('tipoDocumento')" style="min-width: 200px">
+                    Tipo<br>Documento<i [ngClass]="getSortIcon('tipoDocumento')" class="bi"></i>
+                  </th>
+                  <th (click)="sortData('idUsuario')" class="text-center">Responsable</th>
+                  <th (click)="sortData('areaOrigen')" class="text-center">Area Origen</th>
+                  <th (click)="sortData('areaDestino')" class="text-center">Area Destino</th>
+                  <th (click)="sortData('estadoDocumento')" class="text-center">Estado Documento</th>
+                  <th (click)="sortData('nroFolios')" class="text-nowrap">Nro Folios</th>
+                  <th (click)="sortData('asuntoTramite')" class="text-nowrap">Asunto tramite</th>
+                  <th (click)="sortData('fechaTramite')" class="text-center">Fecha Tramite</th>
+                  <th (click)="sortData('archivoAdjunto')" class="text-center">Archivo Adjunto</th>
+                  <th class="text-center">Extras</th>
+                  <th class="text-center">Opciones</th>
+                </tr>
+              </thead>
+              <tbody >
+                <!-- Mostrar mensaje si no hay resultados -->
+                <tr *ngIf="filteredItems.length === 0">
+                <td colspan="16" class="text-center">No se encontraron resultados.</td>
+                </tr>
+                <tr *ngFor="let tramites of paginatedItems; let i = index">
+                  <td>{{ (currentPage - 1) * pageSize + i + 1 }}</td>
+                    <td class="text-left">{{ tramites.nroDocumento}}</td>
+                    <td class="text-nowrap">{{ tramites.tipoDocumento }}</td>
+                    <td class="text-nowrap text-center">{{ tramites.idUsuario }}</td>
+                    <td class="text-center">{{ tramites.areaOrigen}}</td>
+                    <td class="text-center">{{ tramites.areaDestino}}</td>
+                    <td class="text-center">{{ tramites.estadoDocumento}}</td>
+                    <td class="text-center">{{ tramites.nroFolios}}</td>
+                    <td class="text-center">{{ tramites.asuntoTramite}}</td>
+                    <td class="text-center"><i class="fas fa-calendar-alt"></i>&nbsp;{{ tramites.fechaTramite }}</td>
+                    <td class="text-center">{{ tramites.archivoAdjunto}}</td>
+                    <td class="text-center text-nowrap">
+                      <a class="btn btn-dark btn-option" href="" target="_blank"><i class="fas fa-print"></i></a>
+                        <a class="btn btn-secondary btn-option" data-toggle="modal" data-target="#ModalLog"><i class="fas fa-list"></i></a>
+                    </td>
+                    <td class="text-center text-nowrap">
+                      <a class="btn btn-info btn-option" (click)="abrirModalMostrar(tramites)"><i class="fas fa-eye"></i></a>
+                        <a class="btn btn-warning btn-option" (click)="abrirModalEditar(tramites)"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-danger btn-option"  (click)="eliminarProyecto(tramites.id)"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                  </tr>
+              </tbody>
+            </table>
+  
+          </div>
+          <!-- Texto dinámico mostrando la cantidad de proyectos -->
+          <p class="text-center mt-2">{{ pageText }}</p>
+          <!-- Paginador -->
+          <nav aria-label="Page navigation" class="mt-3">
+            <ul class="pagination justify-content-center">
+              <li class="page-item" [class.disabled]="currentPage === 1">
+                <a class="page-link" href="#" (click)="setPage(currentPage - 1); $event.preventDefault()">Anterior</a>
+              </li>
+              <li class="page-item" *ngFor="let page of [].constructor(totalPages); let pageIndex = index"
+                  [class.active]="currentPage === (pageIndex + 1)">
+                <a class="page-link" href="#" (click)="setPage(pageIndex + 1); $event.preventDefault()">{{ pageIndex + 1 }}</a>
+              </li>
+              <li class="page-item" [class.disabled]="currentPage === totalPages">
+                <a class="page-link" href="#" (click)="setPage(currentPage + 1); $event.preventDefault()">Siguiente</a>
+              </li>
+            </ul>
+          </nav>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+  
