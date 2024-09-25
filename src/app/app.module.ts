@@ -34,6 +34,11 @@ import { EditarProyectComponent } from './components/main/proyectos/editar-proye
 import { DeletProyectComponent } from './components/main/proyectos/delet-proyect/delet-proyect.component';
 import { RolesComponent } from './components/main/roles/roles.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SeguimientoComponent } from './components/main/tramite/seguimiento/seguimiento.component';
+import { provideCacheableAnimationLoader, provideLottieOptions } from 'ngx-lottie';
+import player from 'lottie-web';
+import { LottieAnimationComponent } from "./components/shared/lottie-animation/lottie-animation.component";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +55,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CreateProyectComponent,
     EditarProyectComponent,
     DeletProyectComponent,
-    RolesComponent
+    RolesComponent,
+    SeguimientoComponent
   ],
   imports: [
     BrowserModule,
@@ -59,13 +65,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     MatDialogModule,
     MatButtonModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    LottieAnimationComponent
+],
   providers: [
     provideFirebaseApp(() => initializeApp(environment)),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    provideLottieOptions({ player: () => player }),
+    provideCacheableAnimationLoader(),
   ],
   bootstrap: [AppComponent]
 })

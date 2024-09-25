@@ -8,7 +8,7 @@
 .content-area {
   flex-grow: 1;
   padding: 1rem;
-  background-color: #f1f1f1; /* Puedes ajustar el color del fondo */
+  background-color: #F5F7FA; /* Puedes ajustar el color del fondo */
   overflow-y: auto;
 }
 /* Sidebar */

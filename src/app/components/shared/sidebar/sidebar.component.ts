@@ -88,6 +88,18 @@ export class SidebarComponent {
       ]
     },
     {
+      category: "User",
+      items: [
+        {
+          id: 'seguimiento',
+          label: 'Seguimiento',
+          icon: 'fas fa-building',
+          route: '/portal/seguimiento',
+          subItems: []
+        }
+      ]
+    },
+    {
       category: "Otros",
       items: [
         {

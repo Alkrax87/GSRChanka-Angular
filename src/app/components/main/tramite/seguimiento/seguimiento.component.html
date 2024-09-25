@@ -1,0 +1,62 @@
+<div class="container-fluid full-content">
+  <p class="route">Trámite / Seguimiento</p>
+  <h3 class="title">Seguimiento</h3>
+  <div class="seach-container">
+
+    @if (!searchSuccess) {
+      <div>
+        <p class="search-title">Conoce el estado de tu trámite.</p>
+        <div class="input-group">
+          <input type="text" class="search-input" placeholder="Buscar..." [(ngModel)]="searchTerm"/>
+          <div class="input-group-append">
+            <button class="search-btn input-group-append" type="button" (click)="onSearch()">
+              @if (!isLoading) { <span><i class="fas fa-search search-icon"></i></span> }
+              @if (isLoading) { <span class="anim-icon"><i class="fas fa-circle-notch"></i></span> }
+            </button>
+          </div>
+        </div>
+        <div class="lottie-overlay" *ngIf="isLoading">
+          <app-lottie-animation/>
+        </div>
+      </div>
+    }
+
+    @if (searchSuccess && document) {
+      <div class="mt-4">
+        <h2 class="text-xl">Document: {{ document.id }}</h2>
+        <p>{{ document.name }}</p>
+        <div class="list-group mt-2">
+          @for (phase of document.phases; track $index) {
+            <div class="container-fluid my-2">
+              <div class="row">
+                <div class="col-3">
+                  <div class="phase-container">
+                    <div class="phase-icon-container" [ngClass]="{'bg-success': phase.status === 'completed','bg-warning': phase.status === 'in_progress','bg-secondary': phase.status === 'pending','bg-danger': phase.status === 'review'}">
+                      @if (phase.status === 'completed') { <i class="fas fa-check"></i> }
+                      @if (phase.status === 'in_progress') { <span class="progess-icon"><i class="fas fa-cog"></i></span> }
+                      @if (phase.status === 'pending') { <i class="fas fa-times"></i> }
+                      @if (phase.status === 'review') { <span class="review-icon"><i class="fas fa-exclamation"></i></span> }
+                    </div>
+                  </div>
+                  <div class="phase-status-container">
+                    <div class="line" [class]="{'bg-success': phase.status === 'completed','bg-warning': phase.status === 'in_progress','bg-danger': phase.status === 'review'}"></div>
+                  </div>
+                </div>
+                <div class="col-9">
+                  <h4 class="phase-title mb-0">{{ phase.name }}</h4>
+                  <p class="phase-status">@switch (phase.status) {
+                    @case ('completed') { Completado }
+                    @case ('in_progress') { En proceso }
+                    @case ('pending') { Pendiente }
+                    @case ('review') { Observado }
+                  }</p>
+                </div>
+              </div>
+            </div>
+          }
+        </div>
+        <button (click)="resetSearch()" class="reset-btn w-100"><i class="fas fa-search search-icon"></i> &nbsp;Buscar otro Documento</button>
+      </div>
+    }
+  </div>
+</div>

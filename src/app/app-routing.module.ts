@@ -10,6 +10,7 @@ import { TramiteComponent } from './components/main/tramite/tramite.component';
 import { UsuariosComponent } from './components/main/usuarios/usuarios.component';
 import { RolesComponent } from './components/main/roles/roles.component';
 import { AuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard'
+import { SeguimientoComponent } from './components/main/tramite/seguimiento/seguimiento.component';
 
 const redirectLoggedIn = () => redirectLoggedInTo(['portal/home']);
 const redirectUnauthorizedUser = () => redirectUnauthorizedTo(['login']);
@@ -29,6 +30,12 @@ const routes: Routes = [
     data: { authGuardPipe: redirectLoggedIn }
   },
   {
+    path: 'seguimiento',
+    component: SeguimientoComponent,
+    canActivate:[AuthGuard],
+    data: { authGuardPipe: redirectLoggedIn }
+  },
+  {
     path: 'portal',
     component: SidebarComponent,
     canActivate:[AuthGuard],
@@ -40,6 +47,7 @@ const routes: Routes = [
       { path: 'proyectos', component: ProyectosComponent },
       { path: 'usuarios', component: UsuariosComponent },
       { path: 'roles', component: RolesComponent },
+      { path: 'seguimiento', component: SeguimientoComponent },
     ]
   },
 ];
