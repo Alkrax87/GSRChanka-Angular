@@ -1,0 +1,24 @@
+/* Form */
+.form-container {
+  padding: 2rem 1rem;
+}
+/* Button */
+.option-close {
+  border: none;
+  color: #c2c2c2;
+  background-color: #fff;
+}
+.option-button {
+  width: 150px;
+  height: 40px;
+  background-color: #2CC2DD;
+  color: #fff;
+  border: none;
+  border-radius: 15px
+}
+.option-button:hover {
+  background-color: #2ddaf8;
+}
+.rotate {
+  transform: rotate(-90deg);
+}

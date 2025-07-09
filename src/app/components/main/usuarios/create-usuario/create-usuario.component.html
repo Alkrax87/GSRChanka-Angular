@@ -1,0 +1,49 @@
+<div class="form-container">
+  <form [formGroup]="usuarioForm" (ngSubmit)="addUser()">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-11">
+          <h5>Agregar Usuario</h5>
+        </div>
+        <div class="col-1">
+          <button type="button" class="form-close" (click)="close()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="outlined-input-container">
+            <input type="text" id="name" formControlName="name" class="outlined-input" placeholder=" "/>
+            <label for="name" class="outlined-label">Nombre</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="outlined-input-container">
+            <input type="text" id="lastname" formControlName="lastname" class="outlined-input" placeholder=" "/>
+            <label for="lastname" class="outlined-label">Apellido</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="outlined-input-container">
+            <input type="text" id="rol" formControlName="rol" class="outlined-input" placeholder=" "/>
+            <label for="rol" class="outlined-label">Rol</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="outlined-input-container">
+            <input type="text" id="username" formControlName="username" class="outlined-input" placeholder=" "/>
+            <label for="username" class="outlined-label">Usuario</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="outlined-input-container">
+            <input type="password" id="password" formControlName="password" class="outlined-input" placeholder=" "/>
+            <label for="password" class="outlined-label">Contraseña</label>
+          </div>
+        </div>
+        <div class="col-12">
+          <button class="form-button" type="submit" [disabled]="usuarioForm.invalid"><i class="fas fa-plus"></i>&nbsp;&nbsp;Agregar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

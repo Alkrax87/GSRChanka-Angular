@@ -46,6 +46,10 @@ import { ShowTramiteComponent } from './components/main/tramite/show-tramite/sho
 import { EditTramiteComponent } from './components/main/tramite/edit-tramite/edit-tramite.component';
 import { CreateTramiteComponent } from './components/main/tramite/create-tramite/create-tramite.component';
 import { DeleteTramiteComponent } from './components/main/tramite/delete-tramite/delete-tramite.component';
+import { DeleteUsuarioComponent } from './components/main/usuarios/delete-usuario/delete-usuario.component';
+import { CreateUsuarioComponent } from './components/main/usuarios/create-usuario/create-usuario.component';
+import { EditUsuarioComponent } from './components/main/usuarios/edit-usuario/edit-usuario.component';
+import { ShowUsuarioComponent } from './components/main/usuarios/show-usuario/show-usuario.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +76,11 @@ import { DeleteTramiteComponent } from './components/main/tramite/delete-tramite
     ShowTramiteComponent,
     EditTramiteComponent,
     CreateTramiteComponent,
-    DeleteTramiteComponent
+    DeleteTramiteComponent,
+    DeleteUsuarioComponent,
+    CreateUsuarioComponent,
+    EditUsuarioComponent,
+    ShowUsuarioComponent,
   ],
   imports: [
     BrowserModule,

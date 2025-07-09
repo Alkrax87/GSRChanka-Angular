@@ -1,0 +1,73 @@
+.full-content {
+  height: 100%;
+}
+/* Route */
+.route {
+  font-size: 14px;
+  color: #8a8a8a;
+  margin-bottom: 0px;
+}
+/* Title */
+.title {
+  font-size: 30px;
+  color: #2CC2DD;
+  font-weight: bold;
+}
+/* Container */
+.user-container {
+  background: #FFFFFF;
+  box-shadow:  5px 5px 15px #d5d5d5,-10px -10px 20px #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+}
+/* Card User */
+.user-card {
+  background-color: #F5F7FA;
+  border-radius: 8px;
+  height: 250px;
+  border: none;
+}
+.user-card-bg {
+  min-height: 90px;
+ }
+.user-card-bg img {
+  width: 100%;
+  height: 85px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.user-card-logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.profile {
+  position: absolute;
+  top:-50px;
+  height: 90px;
+  width: 90px;
+  border:3px solid #fff;
+  border-radius: 50%;
+}
+.profile img {
+  height: 80px;
+  width: 80px;
+  margin: 2px;
+}
+.user-options {
+  border-radius: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 35px;
+  border: none;
+  background-color: #ffffff;
+}
+.show:hover {
+  color: #0D7C66;
+}
+.edit:hover {
+  color: #FCCD2A;
+}
+.delete:hover {
+  color: #b41616;
+}
